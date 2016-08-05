@@ -9,3 +9,4 @@ from .import  views
 #pattern match when no text in between ^ and $ start and end 
 #in url request
 urlpatterns =[url(r'^$',views.main_page ,name = 'main_page'),]
+urlpattern =[url(r'^test$',views.test_page ,name = 'test_page'),]
