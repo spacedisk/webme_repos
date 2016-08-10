@@ -1,4 +1,4 @@
-"""site_pro URL Configuration
+"""site_src URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
@@ -10,16 +10,26 @@ Class-based views
     1. Add an import:  from other_app.views import Home
     2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
 Including another URLconf
-    1. Import the include() function: from django.conf.urls import url, include
-    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
+    1. Add an import:  from blog import urls as blog_urls
+    2. Import the include() function: from django.conf.urls import url, include
+    3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import include, url
+from django.conf.urls import url
 from django.contrib import admin
-#declare the file containing url pattern here 
 
 urlpatterns = [
+
+    #the user ur request if contins admin will be passed  into  the admin
     url(r'^admin/', admin.site.urls),
-    #goto file webme.urls inside webme folder
-    #when ever client requests arrive
-    url(r'',include('webme.webme_urls')),
+    #the url reqquest from user if empty will be passed into the urls.py file under blogapp folder
+    #ie /blogapp/url.py
+    url(r'', include('webme.webme_urls')),
+    url(r'test.html', include('webme.webme_urls')),
+    #url(r'index.html', include('blogapp.urls')),
+    #url(r'subdivisions.html', include('blogapp.urls')),
+    #url(r'contact.html', include('blogapp.urls')),
+    #url(r'blog.html', include('blogapp.urls')),
+    #url(r'realdat.html', include('blogapp.urls')),
+       
 ]
